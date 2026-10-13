@@ -65,7 +65,7 @@ set "message-command-style"  "fg=$accent,bg=$status_bg"
 set "status-style"           "fg=$status_fg,bg=$status_bg"
 
 setw "window-status-style"            "fg=$comment,bg=$status_bg"
-setw "window-status-current-style"    "fg=$fg,bg=$selection"
+setw "window-status-current-style"    "fg=$fg,bg=$status_bg"
 setw "window-status-activity-style"   "fg=$yellow,bg=$status_bg"
 setw "window-status-separator"        ""
 
