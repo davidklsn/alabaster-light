@@ -7,6 +7,9 @@ accent="#007ACC"
 blue="#325CC0"
 yellow="#CB9000"
 red="#AA3731"
+green="#448C27"
+cyan="#0083B2"
+magenta="#7A3E9D"
 comment="#9DA39A"
 selection="#E3E3E3"
 
@@ -30,6 +33,26 @@ setw() {
    local value=$2
    tmux set-window-option -gq "$option" "$value"
 }
+sets() {
+   local option=$1
+   local value=$2
+   tmux set-option -sq "$option" "$value"
+}
+
+# tmux 3.8 theme palette: menus, popups, copy mode, tree mode, clock etc.
+# are drawn with the theme* colours, so map them to Alabaster and force the
+# light set (an undetected background is otherwise treated as dark).
+sets "theme"                  "light"
+sets "light-theme-black"      "$fg"
+sets "light-theme-white"      "$bg"
+sets "light-theme-light-grey" "$selection"
+sets "light-theme-dark-grey"  "$status_fg"
+sets "light-theme-green"      "$green"
+sets "light-theme-yellow"     "$yellow"
+sets "light-theme-red"        "$red"
+sets "light-theme-blue"       "$blue"
+sets "light-theme-cyan"       "$cyan"
+sets "light-theme-magenta"    "$magenta"
 
 set "status" "on"
 set "status-justify" "left"
@@ -42,6 +65,7 @@ set "message-command-style"  "fg=$accent,bg=$status_bg"
 set "status-style"           "fg=$status_fg,bg=$status_bg"
 
 setw "window-status-style"            "fg=$comment,bg=$status_bg"
+setw "window-status-current-style"    "fg=$fg,bg=$selection"
 setw "window-status-activity-style"   "fg=$yellow,bg=$status_bg"
 setw "window-status-separator"        ""
 
@@ -51,8 +75,8 @@ set "window-active-style"    "fg=$fg"
 set "pane-border-style"        "fg=$selection,bg=$bg"
 set "pane-active-border-style" "fg=$accent,bg=$bg"
 
-set "display-panes-active-colour" "$yellow"
-set "display-panes-colour"        "$blue"
+setw "display-panes-active-colour" "$yellow"
+setw "display-panes-colour"        "$blue"
 
 set "@prefix_highlight_fg"              "$bg"
 set "@prefix_highlight_bg"              "$accent"
