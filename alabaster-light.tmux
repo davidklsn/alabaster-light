@@ -86,8 +86,9 @@ set "@prefix_highlight_output_prefix"   ""
 time_format=$(get "@time_format" "%R")
 date_format=$(get "@date_format" "%d/%m/%Y")
 
-set "status-left"  "#[fg=$bg,bg=$accent,bold] #S #[fg=$accent,bg=$status_bg,nobold,nounderscore,noitalics]"
+set "status-left"  "#[fg=$bg,bg=$accent,bold] #S #[fg=$status_fg,bg=$status_bg,nobold,nounderscore,noitalics] "
 set "status-right" "#[fg=$status_fg,bg=$status_bg]${time_format}  ${date_format} #[fg=$selection,bg=$status_bg]#[fg=$status_fg,bg=$selection] #h #[fg=$accent,bg=$selection,nobold]"
 
-set "window-status-format"         "#[fg=$comment,bg=$status_bg] #I #W "
-set "window-status-current-format" "#[fg=$fg,bg=$selection,bold] #I #W #[fg=$selection,bg=$status_bg,nobold]"
+# Tabs show only the window number
+set "window-status-format"         "#[fg=$comment,bg=$status_bg] #I "
+set "window-status-current-format" "#[fg=$fg,bg=$selection,bold] #I #[nobold]"
